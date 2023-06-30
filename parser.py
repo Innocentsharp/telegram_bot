@@ -11,14 +11,13 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-url='https://ligovka.ru/detailed/usd?tab=200'
-query='doolarharat'
-tehran='dollar_tehran3bze'
-API_TOKEN = '6029654628:AAEJW7KdhYtoZNO3vhMjWcOWNgE1N4i7mjk'
+url='https://ligovka.ru/detailed/usd?tab=200' 
+query='doolarharat' #it work if chanel have more then 1000 folowers
+tehran='dollar_tehran3bze' #it work if chanel have more then 1000 folowers
+API_TOKEN = '[print you token]'
 ADMIN ='136734651'
 ADMIN ='6072975817'
 curent_time=datetime.now()
-# Configure lm
 logging.basicConfig(level=logging.INFO)
 q=requests.get(url)
 result=q.content
@@ -40,11 +39,12 @@ async def send_welcome(message: types.Message):
                     try:
                         for i in range(1000000000):
                             with open("f.txt", "r",encoding="utf-8") as file:
+                                # take use 9-10 line
                                 contents = file.readlines()
                                 str1 = contents[9]
                                 str2 = contents[10]
-                                ru=' 🇺🇸  🇷🇺 نرخ دلار به روبل مسکو\n خرید: \n{}  فروش: \n {}'.format(str1,str2)
-                                doll_teh=re.sub('\D', '', msg.content)
+                                ru=' 🇺🇸  🇷🇺 نرخ دلار به روبل مسکو\n خرید: \n{}  فروش: \n {}'.format(str1,str2) 
+                                doll_teh=re.sub('\D', '', msg.content) 
                                 af='🇺🇸   🇦🇫 نرخ دلار به تومان هرات\n '+doll_teh
                                 tom_msk=round(float(doll_teh)/((float(str1)+float(str2))/2),1)
                                 tom='🇺🇸  🇷🇺 🇮🇷 نرخ دلار به تومان مسکو\n{}'.format(doll_teh)
