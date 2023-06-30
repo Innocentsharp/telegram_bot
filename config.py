@@ -1,6 +1,6 @@
 import os
 
-print("start dowload packs")
+print("start download packs")
 
 os.system("python -m pip install aiogram --upgrade pip")
 os.system("pip install beautifulsoup4, requests, aiogram, snscrape, asyncio")
